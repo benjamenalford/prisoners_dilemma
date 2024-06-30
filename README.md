@@ -10,7 +10,7 @@ This isn't <i>the [trolley problem](https://en.wikipedia.org/wiki/Trolley_proble
 
 I'm not going to explain the problem: the articles are there. you can read them, you made it this far. This has been studied every which way, the only thing educational here should be the code.
 
-at the moment, it's just the basic version of the prisoner's dilemma.  I'm going to move up to the iterated version but have to implement state checking and some semblance of morality scale.
+at the moment, it's just the basic version of the prisoner's dilemma.  I'm going to move up to the iterated version but have to implement state checking and some semblance of morality scale. I'm mostly interested in the 'cooperation' mechanic and seeing how the models learn during that phase. 
 
 ( I was asked about why I was doing this and promptly told to quit talking because this was all pointless and no one was listening.  )
 
