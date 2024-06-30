@@ -6,6 +6,8 @@ prisoners = []
 for i in range(0,2):
     prisoners.append({'prisoner_id': i, 'sentence': 0,'choice':0 })
 
+# Note, I'm using numerics whenever I can ;force of habit and if I port to something else I won't have to deal with boxing/unboxing/casting
+
 # 0 - A and B remain silent - both 1 yr sentence
 # 1 - A against B, B silent, A = 0 sentence  , B - 3 yr sentence
 # 2 - A silent, B against A,  A = 3 sentence, B = 0 sentence
@@ -16,6 +18,7 @@ possible_outcomes = [0,1,2,3]
 # 1 - rat
 possible_choices = [0,1]
 
+# sentencing!  I keep going back and forth on sentencing and outcome logic being at the same level but i don't see any reason to split it up as the logic is the same.
 def determine_outcome(prisoner_a, prisoner_b):
     outcome = 0
     if (prisoner_a['choice'] == prisoner_b['choice']) and (prisoner_a['choice'] != 1 ) :
@@ -52,17 +55,19 @@ def reset():
 
 trials = []
 
-for i in range(0,1000000):
+max_trials = 1000000 # starts to choke on a ham sandwich after 100m or so
+for i in range(0,max_trials):
     round = {}
     round['trial_outcome'] = play_round()
     for prisoner in prisoners:
-        for key in prisoner:
-            round[f'prisoner_{prisoner['prisoner_id']}_{key}'] = prisoner[key]
-            round[f'prisoner_{prisoner['prisoner_id']}_{key}'] = prisoner[key]
+        for key in prisoner: # total hack and testament of laziness. since I'm defining the data as I go, I didn't want to keep coming back here each time I added or removed something from the prisoner ( will be important later)
+            round[f'prisoner_{prisoner['prisoner_id']}_{key}'] = prisoner[key] #this is just assuming I'll want the prisoner data later for something
+            round[f'prisoner_{prisoner['prisoner_id']}_{key}'] = prisoner[key] #samsies
         round[f'prisoner_{prisoner['prisoner_id']}_{key}'] = prisoners[0]['sentence'] - prisoners[1]['sentence']
 
     trials.append(round)
     reset()
 
+# didn't want to do this, but it's just temp for getting the data to another file to work on.
 import pandas as pd
 pd.DataFrame(trials).to_csv('trial_data.csv', index_label='trial_id')
