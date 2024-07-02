@@ -1,7 +1,9 @@
 import random
 # prisoners dilemma
+# trying to keep simple, but leave some flexibility for in the future.
+# general flow setup -> play_round() -> make choice() -> determine outcome() -> reset()
 
-# create the prisoners
+# create the prisoners , it's an array so if needed it can be looped through later.
 prisoners = []
 for i in range(0,2):
     prisoners.append({'prisoner_id': i, 'sentence': 0,'choice':0 })
@@ -55,7 +57,7 @@ def reset():
 
 trials = []
 
-max_trials = 1000000 # starts to choke on a ham sandwich after 100m or so
+max_trials = 1000 # starts to choke on a ham sandwich after 100m or so
 for i in range(0,max_trials):
     round = {}
     round['trial_outcome'] = play_round()
