@@ -1,3 +1,6 @@
 /.prisoner.py.swp
 /.vscode
 /trial_data.csv
+/__pycache__/
+/.venv/
+
