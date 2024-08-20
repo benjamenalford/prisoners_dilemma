@@ -12,7 +12,7 @@ import numpy as np
 
 trials = []
 
-max_trials = 10  # starts to choke on a ham sandwich after 100m or so
+max_trials = 10000  # starts to choke on a ham sandwich after 100m or so
 for i in range(0, max_trials):
     trial_round = {}
     prisoners = []
@@ -22,6 +22,10 @@ for i in range(0, max_trials):
                          'choice': 0, 'morality': MORALITY_BASE})
     trial_round['trail_id'] = i
     trial_round['trial_outcome'] = play_round(prisoners)
+    for prisoner in prisoners:
+        prisoner['morality'] = adjust_morality(
+            trial_round['trial_outcome'], prisoner)
+        trial_round['prisoner_' + str(prisoner['prisoner_id'])] = prisoner
     trial_round['prisoners'] = prisoners
     print(trial_round)
     trials.append(trial_round)

@@ -19,6 +19,6 @@ CHOICE_MAP = {
 }
 # morality
 # -1 to 1 #-1 being immoral, 1 being morally
-MORALITY_BASE = 0
+MORALITY_BASE = .5
 MORALITY_MIN = 1
 MORALITY_MAX = -1
