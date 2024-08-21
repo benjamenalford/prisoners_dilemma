@@ -51,9 +51,9 @@ def adjust_morality(outcome, prisoner):
     if outcome == 0:
         morality += .1
     if outcome == 1:
-        morality -= .1
+        morality += .1
     elif outcome == 2:
-        morality -= np.random.random()
+        morality += np.random.random()
     elif outcome == 3:
-        morality -= np.random.random()
+        morality += np.random.random()
     return round(morality, 2)
